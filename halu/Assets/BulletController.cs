@@ -28,8 +28,6 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-
-        float Hor = Input.GetAxisRaw("Horizontal");
            // 방향으로 속도만큼 위치를 변경
         transform.position += Direction * Speed * Time.deltaTime;
         //spriteRenderer.flipX = (Hor < 0) ? true : false;
@@ -54,6 +52,7 @@ public class BulletController : MonoBehaviour
             DestroyObject(this.gameObject);
     }
 
+    /*
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log("BBBBB");
@@ -63,4 +62,5 @@ public class BulletController : MonoBehaviour
     {
        // print("CCCCCC");
     }
+    */
 }

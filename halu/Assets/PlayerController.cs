@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     // 플레이어의 SpriteRenderer 구성요소를 받아오기 위해...
-    private SpriteRenderer spriteRenderer;
-    //private SpriteRenderer spriteRendererBullet;
+    private SpriteRenderer playerRenderer;
+ 
 
     // [상태체크]
     private bool onAttack; // 공격상태
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         animator = this.GetComponent<Animator>();
 
         // player 의 spriteRenderer 받아온다.
-        spriteRenderer = this.GetComponent<SpriteRenderer>();
+        playerRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     //  유니티 기본 제공 함수
@@ -76,12 +76,13 @@ public class PlayerController : MonoBehaviour
     //  프레임마다 반복적으로 실행되는 함수.
     void Update()
     {
+        transform.position = new Vector3(0.0f, -7.5f, 0.0f);
+
         //  [실수 연산 IEEE754]
 
         // **  Input.GetAxis =     -1 ~ 1 사이의 값을 반환함. 
         float Hor = Input.GetAxisRaw("Horizontal"); // -1 or 0 or 1 셋중에 하나를 반환.
-        float Ver = Input.GetAxis("Vertical"); // -1 ~ 1 까지 실수로 반환.
-
+      
         // Hor이 0이라면 멈춰있는 상태이므로 예외처리를 해준다.
         if (Hor != 0)
             Direction = Hor;
@@ -89,10 +90,10 @@ public class PlayerController : MonoBehaviour
         // 플레이어가 바라보고 있는 방향에 따라 이미지 플립 설정.
         if(Direction < 0)
         {
-            spriteRenderer.flipX = true;
+            playerRenderer.flipX = true;
         }
         else if (Direction > 0)
-            spriteRenderer.flipX = false;
+            playerRenderer.flipX = false;
 
         // 입력받은 값으로 플레이어를 움직인다.
         Movement = new Vector3(
@@ -134,7 +135,7 @@ public class PlayerController : MonoBehaviour
             SpriteRenderer renderer = Obj.GetComponent<SpriteRenderer>();
 
             // 총알의 이미지 반전 상태를 플레이어의 이미지 반전 상태로 설정한다.
-            renderer.flipY = spriteRenderer.flipX;
+            renderer.flipY = playerRenderer.flipX;
 
             //spriteRendererBullet.flipX = (Hor < 0) ? true : false;
            // Obj.transform.rotation.z = 90;

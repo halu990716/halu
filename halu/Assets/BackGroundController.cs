@@ -9,19 +9,20 @@ public class BackGroundController : MonoBehaviour
     private GameObject player;
     private Vector3 movemane;
     private Vector3 offset = new Vector3(0.0f, 7.5f, 0.0f);
+
     void Start()
     {
-        player = GameObject.Find("player").gameObject;
+        player = GameObject.Find("Player").gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
-       movemane = new Vector3(
+        
+        movemane = new Vector3(
             Input.GetAxisRaw("Horizontal") + offset.x,
             player.transform.position.y + offset.y,
             0.0f + offset.z);
-
+       
         transform.position -= movemane * Time.deltaTime * Speed;
     }
 }
