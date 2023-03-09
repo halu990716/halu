@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour
     public GameObject BulletPrefab;
     public GameObject BulletPrefabBack;
 
+    // 복제할 
+    public GameObject fxPrefab;
+
+
+
+    public GameObject[] stageBack = new GameObject[7];
+
     // 복제된 총알의 저장공간.
     private List<GameObject> Bullets = new List<GameObject>();
 
@@ -60,6 +67,9 @@ public class PlayerController : MonoBehaviour
         onHit = false;
 
         Direction = 1.0f;
+
+        for (int i = 0; i < 7; ++i)
+            stageBack[i] = GameObject.Find(i.ToString());
     }
 
     //  유니티 기본 제공 함수
@@ -116,6 +126,9 @@ public class PlayerController : MonoBehaviour
 
             // 총알 스크립트내부의 방향 변수를 현재 플레이어의 방향 변수로 설정 한다.
             Controller.Direction = new Vector3(Direction, 0.0f, 0.0f);
+
+            //총알
+            Controller.fxPrefab = fxPrefab;
 
             // 총알의 spriteRenderer를 받아온다.
             SpriteRenderer renderer = Obj.GetComponent<SpriteRenderer>();

@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 5664232616570299551}
   - component: {fileID: 614221948742876993}
   - component: {fileID: -6847006259115742366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &412968237155097766
 Transform:
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 412968237155097760}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 421225119
+  m_SortingLayer: 2
+  m_SortingOrder: 100
   m_Sprite: {fileID: 1737672109, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cd7951a66f06e40a3664d2f88d065d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fxPrefab: {fileID: 0}
 --- !u!50 &-6847006259115742366
 Rigidbody2D:
   serializedVersion: 4
