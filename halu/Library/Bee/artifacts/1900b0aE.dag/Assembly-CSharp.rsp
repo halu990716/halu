@@ -370,6 +370,7 @@
 "Assets/scripts/BackGroundController.cs"
 "Assets/scripts/BulletController.cs"
 "Assets/scripts/CameraController.cs"
+"Assets/scripts/ControllerManager.cs"
 "Assets/scripts/PlayerController.cs"
 -langversion:9.0
 

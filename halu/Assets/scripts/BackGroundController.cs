@@ -64,33 +64,27 @@ public class BackGroundController : MonoBehaviour
 
     void Update()
     {
-        // 플레이어가 바라보고 있는 방향에 따라 분기됨.
-        /*
-        if(playerRenderer.flipX)
-        { // ** 좌측 이동
-         // 이동정보 셋팅
-            movemane = new Vector3(
-                Input.GetAxisRaw("Horizontal") * Time.deltaTime * Speed + offset.x, // singleton
-                player.transform.position.y + offset.y,
-                0.0f + offset.z);
-        }
-        else
-        {// ** 우측이동
-
-        }
-        */
-
- 
         // 이동정보 셋팅
         movemane = new Vector3(
             Input.GetAxisRaw("Horizontal") * Time.deltaTime * Speed + offset.x, // singleton
             player.transform.position.y + offset.y,
             0.0f + offset.z);
-       
+
+        // 플레이어가 바라보고 있는 방향에 따라 분기됨.
+
+        if (ControllerManager.GetInstance().DirLeft)
+        { // ** 좌측 이동
+            endPoint -= movemane.x;
+        }
+        if (ControllerManager.GetInstance().DirRight)
+        {// ** 우측이동
+                transform.position -= movemane;
+        }
+
        
         // 이동정보 적용
-        transform.position -= movemane;
-        endPoint -= movemane.x;
+       
+        
 
         // 동일한 이미지 복사
         if(player.transform.position.x + (sprite.bounds.size.x * 0.5f) + 1 > endPoint)
