@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     // ** 움직이는 속도
@@ -33,8 +32,12 @@ public class PlayerController : MonoBehaviour
     private GameObject fxPrefab;
 
 
+    //추후 list로 변경
+    //public GameObject[] stageBack = new GameObject[7];
+    private List<GameObject> stageBack = new List<GameObject>();
 
-    public GameObject[] stageBack = new GameObject[7];
+    //Dictionary<string, object>;
+    //Dictionary<string, GameObject>;
 
     // 복제된 총알의 저장공간.
     private List<GameObject> Bullets = new List<GameObject>();
@@ -59,18 +62,17 @@ public class PlayerController : MonoBehaviour
 
         BulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
         fxPrefab = Resources.Load("Prefabs/FX/Smoke") as GameObject; 
-    }
+    }   
 
     //  유니티 기본 제공 함수
     //  초기값을 설정할 때 사용
     void Start()
     {
+        //EnemyManager.Getinstance;
+
         //  속도를 초기화.
         Speed = 5.0f;
 
-        //spriteRendererBullet = BulletPrefab.GetComponent<SpriteRenderer>();
-
-        //bulletPrefabBack = Bullet.GetComponent<SpriteRenderer>();
 
         // 초기값 설정
         onAttack = false;
@@ -79,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
         Direction = 1.0f;
 
-        Dir = false;
         DirLeft = false;
         DirRight = false;
 
@@ -96,12 +97,15 @@ public class PlayerController : MonoBehaviour
 
         // **  Input.GetAxis =     -1 ~ 1 사이의 값을 반환함. 
         float Hor = Input.GetAxisRaw("Horizontal"); // -1 or 0 or 1 셋중에 하나를 반환.
+        float Ver = Input.GetAxisRaw("Vertical"); // -1 or 0 or 1 셋중에 하나를 반환.
 
         // 입력받은 값으로 플레이어를 움직인다.
         Movement = new Vector3(
             Hor * Time.deltaTime * Speed,
-            0.0f,
+            Ver * Time.deltaTime * Speed * 0.5f,
             0.0f);
+
+        transform.position += new Vector3(0.0f, Movement.y, 0.0f);
 
         // Hor이 0이라면 멈춰있는 상태이므로 예외처리를 해준다.
         if (Hor != 0)
@@ -109,8 +113,8 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            // ** 플레이어 좌표가 0.0 보다 작을때 플레이어만 움직인다.
-            if (transform.position.x < 0)
+            // ** 플레이어 좌표가 0.1 보다 작을때 플레이어만 움직인다.
+            if (transform.position.x < 0.1f)
                 transform.position += Movement;
             else
             {
@@ -120,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             ControllerManager.GetInstance().DirRight = false;
             ControllerManager.GetInstance().DirLeft = true;
@@ -312,4 +316,9 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Idel");
     }
     */
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("Coll");
+    }
 }
