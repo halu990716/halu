@@ -44,9 +44,7 @@ public class BackGroundController : MonoBehaviour
         // 이미지를 담고있는 구성요소를 받아온다.
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // 구성요소에 포함된 이미지를 받아온다.
-        sprite = spriteRenderer.sprite;
-
+        // ** 플레이어 이미지를 담고있는 구성요소를 받아온다.
         playerController = player.GetComponent<PlayerController>();
 
     }

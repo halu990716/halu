@@ -31,9 +31,14 @@ public class PlayerController : MonoBehaviour
     // 복제할 
     private GameObject fxPrefab;
 
+    // 복사할 백그라운드 원본
+    private GameObject backGround;
+
 
     //추후 list로 변경
     //public GameObject[] stageBack = new GameObject[7];
+
+    // 복제된 백그라운드의 저장공간.
     private List<GameObject> stageBack = new List<GameObject>();
 
     //Dictionary<string, object>;
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     // 복제된 총알의 저장공간.
     private List<GameObject> Bullets = new List<GameObject>();
+
 
     // 플레이어가 마지막으로 바라본 방향.
     private float Direction;
@@ -61,7 +67,9 @@ public class PlayerController : MonoBehaviour
         playerRenderer = this.GetComponent<SpriteRenderer>();
 
         BulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
-        fxPrefab = Resources.Load("Prefabs/FX/Smoke") as GameObject; 
+        fxPrefab = Resources.Load("Prefabs/FX/Smoke") as GameObject;
+        // 백그라운드
+        backGround = Resources.Load("Prefabs/BackGround") as GameObject;
     }   
 
     //  유니티 기본 제공 함수
@@ -84,8 +92,8 @@ public class PlayerController : MonoBehaviour
         DirLeft = false;
         DirRight = false;
 
-        for (int i = 0; i < 7; ++i)
-            stageBack[i] = GameObject.Find(i.ToString());
+        //for (int i = 0; i < 7; ++i)
+        //    stageBack[i] = GameObject.Find(i.ToString());
     }
 
     //  유니티 기본 제공 함수
@@ -194,8 +202,9 @@ public class PlayerController : MonoBehaviour
            // Obj.transform.rotation.z = 90;
 
             // 모든 설정이 종료되었다면 저장소에 보관한다.
-            Bullets.Add(Obj);   
+            Bullets.Add(Obj);
 
+            stageBack.Add(Obj);
         }
            // OnJump();
            

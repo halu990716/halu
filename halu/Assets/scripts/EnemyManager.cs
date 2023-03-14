@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     private EnemyManager() { }
     private static EnemyManager instance = null;
 
-    public static EnemyManager Getinstance
+    public static EnemyManager GetInstance
     {
         get
         {
@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
             // ** 씬이 변경되어도 계속 유지될 수 있게 해준다.
             DontDestroyOnLoad(gameObject);
 
-            prefab = Resources.Load("Resources/Prefabs/Enemy/Enemy") as GameObject;
+            prefab = Resources.Load("Prefabs/Enemy/Enemy") as GameObject;
         }
     }
 
@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
         {
             GameObject Obj = Instantiate(prefab);
             Obj.transform.position = new Vector3(
-                18.0f, Random.Range(-8.2f, -5.5f), 0.0f);
+                18.0f, Random.Range(-8.2f, -5.2f), 0.0f);
 
             Obj.transform.name = "TEST";
 
