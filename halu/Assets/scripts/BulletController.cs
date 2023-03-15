@@ -43,14 +43,6 @@ public class BulletController : MonoBehaviour
         // 이펙트효과 복제.
         GameObject Obj = Instantiate(fxPrefab);
 
-  
-
-        // 진동효과를 생성할 관리자 생성
-        GameObject camera = new GameObject("Camera Test");
-
-        // 진동 효과 컨트롤러 생성
-        camera.AddComponent<CameraController>();
-
         // 이펙트 효과의 위치를 지정
         Obj.transform.position = transform.position;
 
@@ -60,8 +52,10 @@ public class BulletController : MonoBehaviour
             Destroy(this.gameObject);
         else
         {
+            // ** 진동효과를 생성할 관리자 생성.
             GameObject camera = new GameObject("Camera Test");
 
+            // ** 진동 효과 컨트롤러 생성.
             camera.AddComponent<CameraController>();
         }
 
