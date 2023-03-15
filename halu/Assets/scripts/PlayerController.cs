@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     //public GameObject[] stageBack = new GameObject[7];
 
     // 복제된 백그라운드의 저장공간.
-    private List<GameObject> stageBack = new List<GameObject>();
+    public List<GameObject> stageBack = new List<GameObject>();
 
     //Dictionary<string, object>;
     //Dictionary<string, GameObject>;
@@ -51,10 +51,19 @@ public class PlayerController : MonoBehaviour
     // 플레이어가 마지막으로 바라본 방향.
     private float Direction;
 
+
+    [Header("방향")]
+    // ** 플레이어가 바라보는 방향
+
+    [Tooltip("왼쪽")]
+    public bool DirLeft;
+    [Tooltip("오른쪽")]
+    public bool DirRight;
+
     // 플레이어가 바라보는 방향
     public bool Dir;
-    public bool DirLeft;
-    public bool DirRight;
+    //public bool DirLeft;
+    //public bool DirRight;
 
     //void OnKeyUp
 
@@ -67,9 +76,10 @@ public class PlayerController : MonoBehaviour
         playerRenderer = this.GetComponent<SpriteRenderer>();
 
         BulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
-        fxPrefab = Resources.Load("Prefabs/FX/Smoke") as GameObject;
+        //fxPrefab = Resources.Load("Prefabs/FX/Smoke") as GameObject;
+        fxPrefab = Resources.Load("Prefabs/FX/Hit") as GameObject;
         // 백그라운드
-        backGround = Resources.Load("Prefabs/BackGround") as GameObject;
+        //backGround = Resources.Load("Prefabs/BackGround") as GameObject;
     }   
 
     //  유니티 기본 제공 함수
@@ -176,6 +186,9 @@ public class PlayerController : MonoBehaviour
         // 스페이스바를 입력한다면....
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // 공격
+            OnAttack();
+
             // 총알원본을 복제한다.
             GameObject Obj = Instantiate(BulletPrefab);
 
@@ -189,7 +202,7 @@ public class PlayerController : MonoBehaviour
             // 총알 스크립트내부의 방향 변수를 현재 플레이어의 방향 변수로 설정 한다.
             Controller.Direction = new Vector3(Direction, 0.0f, 0.0f);
 
-            //총알
+            //총알 스크립트내부의 FX Prefab을 설정한다.
             Controller.fxPrefab = fxPrefab;
 
             // 총알의 spriteRenderer를 받아온다.
@@ -204,7 +217,7 @@ public class PlayerController : MonoBehaviour
             // 모든 설정이 종료되었다면 저장소에 보관한다.
             Bullets.Add(Obj);
 
-            stageBack.Add(Obj);
+            //stageBack.Add(Obj);
         }
            // OnJump();
            
