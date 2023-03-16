@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     // ** 움직이는 속도
     private float Speed;
 
+    private int HP;
+    private float Cool;
+
+
     // 움직임을 저장하는 벡터
     private Vector3 Movement;
 
@@ -23,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool onJump;
     private bool onclimbing;
     private bool ondaegurrrr;
+
+   
 
     // 복사할 총알 원본
     private GameObject BulletPrefab;
@@ -90,7 +96,9 @@ public class PlayerController : MonoBehaviour
 
         //  속도를 초기화.
         Speed = 5.0f;
+        HP = 3;
 
+        Cool = 1.0f;
 
         // 초기값 설정
         onAttack = false;
@@ -110,7 +118,7 @@ public class PlayerController : MonoBehaviour
     //  프레임마다 반복적으로 실행되는 함수.
     void Update()
     {
-
+        Cool -= Time.deltaTime;
         //  [실수 연산 IEEE754]
 
         // **  Input.GetAxis =     -1 ~ 1 사이의 값을 반환함. 
@@ -184,8 +192,9 @@ public class PlayerController : MonoBehaviour
             OnHit();
 
         // 스페이스바를 입력한다면....
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Cool < 0)
         {
+            Cool = 1.0f;
             // 공격
             OnAttack();
 
@@ -341,6 +350,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Coll");
+        if (collision.transform.tag == "Enemy")
+            --HP;
+
+        if (HP == 0)
+            print("DIE");
     }
 }
