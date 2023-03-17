@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         //EnemyManager.Getinstance;
 
         //  속도를 초기화.
-        Speed = 5.0f;
+        Speed = 2.0f;
         HP = 3;
 
         Cool = 1.0f;

@@ -20,10 +20,14 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        Anim = GetComponent<Animator>();
+        Anim = GetComponent<Animator>(); 
+
+        Player = GameObject.Find("Player").gameObject;
     }
     void Start()
     {
+        //print(EnemyManager.GetInstance.Distance);
+
         Speed = 0.2f;
         Movement = new Vector3(1.0f, 0.0f, 0.0f);
         HP = 3;
@@ -35,7 +39,7 @@ public class EnemyController : MonoBehaviour
 
         Run = true;
 
-        Player = GameObject.Find("Player").gameObject;
+       
     }
 
     // Update is called once per frame
@@ -51,12 +55,13 @@ public class EnemyController : MonoBehaviour
 
             attack();
         }
-        //else
-        //{
-        //    Movement = new Vector3(2.0f, 0.0f, 0.0f);
-        //    transform.position -= Movement * Time.deltaTime;
-        //    Anim.SetFloat("Speed", Movement.x);
-        //}
+        else
+        {
+            Movement = ControllerManager.GetInstance().DirRight ?
+                 new Vector3(1.0f, 0.0f, 0.0f) : new Vector3(0.0f, 0.0f, 0.0f);
+
+            transform.position -= Movement * Time.deltaTime;
+        }
     }
 
     private void runOff()
