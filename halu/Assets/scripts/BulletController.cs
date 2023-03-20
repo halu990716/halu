@@ -5,7 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     // 총알이 날라가는 속도
-    private float Speed;
+    [HideInInspector]public float Speed;
+    [HideInInspector]public int Damage;
 
     // 총알이 충돌한 횟수
     private int hp;
@@ -22,8 +23,9 @@ public class BulletController : MonoBehaviour
     private void Start()
     {
         // 속도 초기값
-        Speed = 10.0f;
+        Speed = ControllerManager.GetInstance().BulletSpeed;
 
+        Damage = ControllerManager.GetInstance().BulletDamage;
         // 충돌 횟수를 3으로 지정한다
         hp = 3;
     }

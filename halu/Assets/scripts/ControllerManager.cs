@@ -16,4 +16,8 @@ public class ControllerManager
 
     public bool DirLeft;
     public bool DirRight;
+
+    public float BulletSpeed = 10.0f;
+    public int BulletDamage = 1;
+    public int PlayerHP = 3;
 }

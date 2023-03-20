@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.tag == "Bullet")
         {
-            --HP;
+            HP = HP - ControllerManager.GetInstance().BulletDamage;
 
             if (HP <= 0)
             {

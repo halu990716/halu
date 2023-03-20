@@ -32,6 +32,7 @@ public class BossController : MonoBehaviour
     private bool Attack;
     private bool Walk;
     private bool active;
+    private bool slideJump;
 
     private int choice;
 
@@ -48,13 +49,14 @@ public class BossController : MonoBehaviour
         CoolDown = 0.5f;
         Speed = 1.0f;
         HP = 30000;
-        slideSpeed = 5.0f;
+        slideSpeed = 6.0f;
 
         fTime = CoolDown;
 
         active = false;
 
         slide = false;
+        slideJump = true;
         Attack = false;
         Walk = false;
     }
@@ -111,6 +113,13 @@ public class BossController : MonoBehaviour
         else if (slide) 
         {
             upSkillAttack();
+            if (slideJump)
+            {
+                Anim.SetTrigger("slide Jump");
+                slideJump = false;
+                //print("if");
+
+            }
         }
     }
 
@@ -133,9 +142,11 @@ public class BossController : MonoBehaviour
             {
                 Movement = new Vector3(0.0f, 0.0f, 0.0f);
                 slide = false;
+                slideJump = true;
                 bossXY();
 
-                print("if");
+                Anim.SetTrigger("Idel");
+
             }
 
             if (Attack)
@@ -148,6 +159,12 @@ public class BossController : MonoBehaviour
 
         // ** 어디로 움직일지 정하는 시점에 플레이어의 위치를 도착지점으로 셋팅
         EndPoint = Target.transform.position;
+
+        //
+        EndPoint = new Vector3(
+            EndPoint.x,
+            EndPoint.y + 1.0f,
+            EndPoint.z);
 
         // ** [return]
         // ** 0 : 공격            Attack
@@ -191,7 +208,7 @@ public class BossController : MonoBehaviour
 
     private void onAttack()
     {
-        print("onAttack");
+        //print("onAttack");
 
         Anim.SetTrigger("Attack");
         Attack = true;
@@ -201,7 +218,7 @@ public class BossController : MonoBehaviour
 
     private void onWalk()
     {
-        print("onWalk");
+        //print("onWalk");
         Walk = true;
         active = false;
         bossXY();
@@ -209,8 +226,7 @@ public class BossController : MonoBehaviour
 
     private void onSlide()
     {
-         print("onSlide");
-        Anim.SetBool("slide", false);
+        //print("onSlide");
         slide = true;
         active = false;
         bossXY();
@@ -244,7 +260,6 @@ public class BossController : MonoBehaviour
     {
         float Distance = Vector3.Distance(EndPoint, transform.position);
 
-
         if (Distance > 0.5f)
         {
             Vector3 Direction = (EndPoint - transform.position).normalized;
@@ -256,7 +271,6 @@ public class BossController : MonoBehaviour
 
             transform.position += Movement * Time.deltaTime;
 
-            Anim.SetTrigger("slide Jump");
             //Anim.SetBool("slide", true);
 
             fTime = CoolDown;
@@ -265,7 +279,22 @@ public class BossController : MonoBehaviour
 
     private void OnSlide()
     {
-        Anim.SetBool("slide", true);
+        Anim.SetTrigger("slide");
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet")
+        {
+            //print("HIT");
+            HP = HP - ControllerManager.GetInstance().BulletDamage;
+
+            if (HP <= 0)
+            {
+                Destroy(gameObject, 0.016f);
+            }
+        }
     }
 }
 

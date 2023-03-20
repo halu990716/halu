@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     // ** 움직이는 속도
     private float Speed;
 
-    private int HP;
+    [HideInInspector]public int HP;
     private float Cool;
 
 
@@ -96,7 +96,6 @@ public class PlayerController : MonoBehaviour
 
         //  속도를 초기화.
         Speed = 2.0f;
-        HP = 3;
 
         Cool = 1.0f;
 
@@ -118,6 +117,9 @@ public class PlayerController : MonoBehaviour
     //  프레임마다 반복적으로 실행되는 함수.
     void Update()
     {
+        HP = ControllerManager.GetInstance().PlayerHP;
+        //print(HP);
+
         Cool -= Time.deltaTime;
         //  [실수 연산 IEEE754]
 
