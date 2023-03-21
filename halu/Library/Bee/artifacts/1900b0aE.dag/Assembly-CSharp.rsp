@@ -375,6 +375,8 @@
 "Assets/scripts/EnemyManager.cs"
 "Assets/scripts/MyGizmo.cs"
 "Assets/scripts/PlayerController.cs"
+"Assets/scripts/UI/EnemyHpBar.cs"
+"Assets/scripts/UI/PlayerHPvar.cs"
 "Assets/scripts/UI/SidebarController.cs"
 "Assets/Textures/Test.cs"
 -langversion:9.0

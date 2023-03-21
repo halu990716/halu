@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     //  프레임마다 반복적으로 실행되는 함수.
     void Update()
     {
-        HP = ControllerManager.GetInstance().PlayerHP;
+        HP = ControllerManager.GetInstance().Player_HP;
         //print(HP);
 
         Cool -= Time.deltaTime;

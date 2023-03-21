@@ -96,6 +96,6 @@ public class Test : MonoBehaviour
 
         cooldown = 0.5f;
 
-        ControllerManager.GetInstance().PlayerHP += 1;
+        ControllerManager.GetInstance().Player_HP += 1;
     }
 }
