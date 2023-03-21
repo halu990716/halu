@@ -8,7 +8,9 @@ public class Test : MonoBehaviour
     public List<GameObject> Images = new List<GameObject>();
     public List<GameObject> Buttons = new List<GameObject>();
     public List<Image> ButtonsImages = new List<Image>();
+
     private float cooldown;
+
     private int Index;
 
     private void Start()
@@ -58,7 +60,7 @@ public class Test : MonoBehaviour
 
         ControllerManager.GetInstance().BulletSpeed += 0.025f;
         ControllerManager.GetInstance().BulletDamage++;
-
+        
     }
 
     public void Testcase1()
