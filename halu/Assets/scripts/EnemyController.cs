@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
         Speed = 0.2f;
         Movement = new Vector3(1.0f, 0.0f, 0.0f);
-        HP = 3;
+        HP = ControllerManager.GetInstance().HP;
 
         SkillWaitingTime = 10;
         AttackWaitingTime = 2;
@@ -121,6 +121,7 @@ public class EnemyController : MonoBehaviour
             if (HP <= 0)
             {
                 Anim.SetTrigger("Die");
+                ControllerManager.GetInstance().Player_EXP++;
                 GetComponent<CapsuleCollider2D>().enabled = false;
             }
         }

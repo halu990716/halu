@@ -21,4 +21,7 @@ public class ControllerManager
     public float BulletSpeed = 10.0f;
     public int BulletDamage = 1;
     public int Player_HP = 100;
+    public int Player_EXP = 0;
+
+    public int HP = 3;
 }

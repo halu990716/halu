@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float Speed;
 
     [HideInInspector]public int HP;
+    [HideInInspector]public int EXP;
+
     private float Cool;
 
 
@@ -119,6 +121,8 @@ public class PlayerController : MonoBehaviour
     {
         HP = ControllerManager.GetInstance().Player_HP;
         //print(HP);
+
+        EXP = ControllerManager.GetInstance().Player_EXP;
 
         Cool -= Time.deltaTime;
         //  [실수 연산 IEEE754]

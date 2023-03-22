@@ -58,18 +58,19 @@ public class EnemyManager : MonoBehaviour
             // ** Enemy HP UI 복제.
             GameObject Bar = Instantiate(HPprefab);
 
-            // ** 복제된 UI를 캔버스에 위치시킨다.
-            Bar.transform.parent = GameObject.Find("EnemyHPCanvas").transform;
+            // ** 복제된 UI를 캔버스에 위치시킨다. 2가지 방법
+            //Bar.transform.parent = GameObject.Find("EnemyHPCanvas").transform;
+            Bar.transform.SetParent(GameObject.Find("EnemyHPCanvas").transform);
 
             // ** Enemy 작동 스크립트 포함.
-            Obj.AddComponent<EnemyController>();
+            //Obj.AddComponent<EnemyController>();
 
             // ** 클론의 위치를 초기화.
-            Obj.transform.position = new Vector3(
-                18.0f, Random.Range(-8.2f, -5.2f), 0.0f);
-
             //Obj.transform.position = new Vector3(
-            //    18.0f, -7.3f, 0.0f);
+            //    18.0f, Random.Range(-8.2f, -5.2f), 0.0f);
+
+            Obj.transform.position = new Vector3(
+                18.0f, -7.3f, 0.0f);
 
 
             // ** 클론의 이름 초기화
