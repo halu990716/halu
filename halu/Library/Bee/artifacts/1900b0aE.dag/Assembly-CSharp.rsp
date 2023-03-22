@@ -366,6 +366,7 @@
 "Assets/99. Resource/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_LightIntensityFade.cs"
 "Assets/99. Resource/Yoge/ParallaxBackground 1/Scripts/CameraMovement.cs"
 "Assets/99. Resource/Yoge/ParallaxBackground 1/Scripts/Parallax.cs"
+"Assets/ButtonController.cs"
 "Assets/scripts/BackGroundController.cs"
 "Assets/scripts/BossController.cs"
 "Assets/scripts/BulletController.cs"
