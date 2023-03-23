@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class UiController : MonoBehaviour
 {
     public GameObject SkillCanvas;
+    public GameObject TestCanvas;
     public bool SkillCanvasActive;
 
     private void Awake()
@@ -25,6 +26,7 @@ public class UiController : MonoBehaviour
     {
         SkillCanvasActive = !SkillCanvasActive;
         SkillCanvas.SetActive(SkillCanvasActive);
+        TestCanvas.SetActive(SkillCanvasActive);
     }
 
     public void onTitle()

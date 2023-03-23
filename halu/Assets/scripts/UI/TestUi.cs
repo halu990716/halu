@@ -17,6 +17,7 @@ public class TestUi : MonoBehaviour
 
     void Start()
     {
+        uiTranspos.SetAsFirstSibling();
         sizeX = 1000.0f;
         sizeY = 500.0f;
     }
