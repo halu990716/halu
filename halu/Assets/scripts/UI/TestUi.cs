@@ -24,7 +24,7 @@ public class TestUi : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(EffectUi());
+        //StartCoroutine(EffectUi());
     }
 
     private void OnDisable()

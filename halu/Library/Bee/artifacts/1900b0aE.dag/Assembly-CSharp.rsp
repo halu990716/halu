@@ -368,6 +368,8 @@
 "Assets/99. Resource/Yoge/ParallaxBackground 1/Scripts/Parallax.cs"
 "Assets/BulletPattern.cs"
 "Assets/ButtonController.cs"
+"Assets/DataManager.cs"
+"Assets/DataTest.cs"
 "Assets/scripts/BackGroundController.cs"
 "Assets/scripts/BossController.cs"
 "Assets/scripts/BulletControll.cs"

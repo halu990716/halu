@@ -15,7 +15,7 @@ public class BulletPattern : MonoBehaviour
         GuideBillet
     };
 
-    public Pattern pattern = Pattern.Screw;
+    public Pattern pattern = Pattern.Explosion;
     public Sprite sprite;
 
     public List<GameObject> BulletList = new List<GameObject>();
@@ -36,7 +36,7 @@ public class BulletPattern : MonoBehaviour
                 break;
 
             case Pattern.Twist:
-
+                StartCoroutine(TwistPattern());
                 break;
 
             case Pattern.Explosion:
@@ -49,12 +49,6 @@ public class BulletPattern : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-
-
-     }
 
     private void GetScrewPattern(float _angle, int _count, bool _option =false)
     {
@@ -86,7 +80,9 @@ public class BulletPattern : MonoBehaviour
         float fAngle = 30.0f;
 
         int iCount = (int)(360 / fAngle);
+
         int i = 0;
+        
         while(i < (iCount) * 3)
         {
             GameObject Obj = Instantiate(BulletPrefab);
@@ -106,7 +102,8 @@ public class BulletPattern : MonoBehaviour
             Obj.transform.position = transform.position;
 
             BulletList.Add(Obj);
-            yield return new WaitForSeconds(0.05f);
+            ++i;
+            yield return new WaitForSeconds(0.025f);
         }
 
     }
@@ -121,7 +118,7 @@ public class BulletPattern : MonoBehaviour
         {
             fTime -= Time.deltaTime;
 
-            GameObject obj = Instantiate(Resources.Load("Pregabs/Twist"));
+            GameObject obj = Instantiate(Resources.Load("Prefabs/Twist")) as GameObject;
 
             yield return null;
         }
@@ -168,7 +165,7 @@ public class BulletPattern : MonoBehaviour
                 0.0f) * 5 + transform.position;
 
 
-            Obj.transform.position = transform.position;
+            Obj.transform.position = pos;
 
             BulletList.Add(Obj);
         }

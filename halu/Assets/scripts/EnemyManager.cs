@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
             Distance = 0.0f;
 
             // ** 씬이 변경되어도 계속 유지될 수 있게 해준다.
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             // ** 생성되는 Enemy를 담아둘 상위 객체
             Parent = new GameObject("EnemyList");
