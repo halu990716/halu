@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 
 [System.Serializable]
 public class MemberForm
 {
-    public string Name;
-    public int Age;
+    public int index;
+    public string name;
+    public int age;
+    public int gender;
 
-    public MemberForm(string name, int age)
+    public MemberForm(int index, string name, int age, int gender)
     {
-        this.Name = name;
-        this.Age = age;
+        this.index = index;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 }
 // 회원가입
@@ -24,6 +29,7 @@ public class ExampleManager : MonoBehaviour
 
     string URL = "https://script.google.com/macros/s/AKfycbx3QlTyD01scP2y90VF8bE5vOcOys278puntrN7cey99ZpOJMxXjsvnpqK-jkg-tyVaAA/exec";
 
+    /*
     IEnumerator Start()
     {
         // ** 요청을 하기위한 작업.
@@ -44,4 +50,28 @@ public class ExampleManager : MonoBehaviour
             print(request.downloadHandler.text);
         }
     }
+    */
+
+    IEnumerator Start()
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(URL))
+        {
+            yield return request.SendWebRequest();
+
+            MemberForm json = JsonUtility.FromJson<MemberForm>(request.downloadHandler.text);
+
+            // ** 응답에 대한 작업.
+
+            print(json.index);
+            print(json.name);
+            print(json.age);
+            print(json.gender);
+        }
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene("progressScenes");
+    }
+
 }

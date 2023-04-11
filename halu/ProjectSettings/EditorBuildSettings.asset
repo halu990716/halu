@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/minimap.unity
     guid: 2ff99adbd708cfe4e9f1c874761c01e6
+  - enabled: 1
+    path: Assets/Scenes/progressScenes.unity
+    guid: e0e574de7877498459e90e14c027e68d
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: bf0413a6cd798a446a5165141f6e6904
   m_configObjects: {}

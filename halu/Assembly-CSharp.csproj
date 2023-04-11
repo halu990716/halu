@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D4E301DF-BC57-F5DF-57F0-7A613491F97D}</ProjectGuid>
+    <ProjectGuid>{7B55EE78-9B1E-A9D1-0EE9-ABE4AB8E7BFB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,6 +59,7 @@
     <Compile Include="Assets\scripts\BulletControll.cs" />
     <Compile Include="Assets\99. Resource\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\scripts\MyGizmo.cs" />
+    <Compile Include="Assets\scripts\Sever\progressBar.cs" />
     <Compile Include="Assets\scripts\PlayerController.cs" />
     <Compile Include="Assets\99. Resource\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\99. Resource\Yoge\ParallaxBackground 1\Scripts\Parallax.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="Assets\scripts\UI\SidebarController.cs" />
     <Compile Include="Assets\scripts\UI\TestUi.cs" />
     <Compile Include="Assets\ButtonController.cs" />
-    <Compile Include="Assets\scripts\ExampleManager.cs" />
+    <Compile Include="Assets\scripts\Sever\ExampleManager.cs" />
     <Compile Include="Assets\99. Resource\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\99. Resource\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\scripts\UI\UiController.cs" />
@@ -806,27 +807,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{712578EF-0F1B-D6DC-1E2A-274052286923}</Project>
+      <Project>{AE598E3B-7CF5-FF49-794C-5B10419C76CA}</Project>
       <Name>ToonyColorsPro.Demo.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{B04FF52D-B737-346D-DEA3-193E37BCA430}</Project>
+      <Project>{99CF0D87-0F52-7596-6ECD-042FDFE3D4EB}</Project>
       <Name>KinoBloom.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="CFXREditor.csproj">
-      <Project>{4333A055-8A92-1F1C-DC29-8E60F4878BD5}</Project>
+      <Project>{DF2A2E36-6E8A-F5E5-6291-ECD2F2502C0F}</Project>
       <Name>CFXREditor</Name>
     </ProjectReference>
     <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{BEF4099E-BBF4-A86F-290D-5665D63BC18B}</Project>
+      <Project>{A7BF4A92-9E96-55D8-CD8D-4A35C0B0DF75}</Project>
       <Name>CFXRDemo</Name>
     </ProjectReference>
     <ProjectReference Include="CFXR.WelcomeScreen.csproj">
-      <Project>{92FF9E7F-E7E8-5D08-99BB-4C0F37E2D908}</Project>
+      <Project>{5D799319-3191-1016-D7F7-CFB2878CE407}</Project>
       <Name>CFXR.WelcomeScreen</Name>
     </ProjectReference>
     <ProjectReference Include="CFXRRuntime.csproj">
-      <Project>{6004D570-C817-32BF-1603-A3850D315076}</Project>
+      <Project>{295AA837-8AD1-C2B4-27B3-6A4D46AF20CB}</Project>
       <Name>CFXRRuntime</Name>
     </ProjectReference>
   </ItemGroup>
